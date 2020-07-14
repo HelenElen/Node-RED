@@ -1,0 +1,44 @@
+[
+  {
+    "id": "778ff6cb.8514a8",
+    "type": "ui_button",
+    "z": "45adba75.40f824",
+    "name": "",
+    "group": "4579ad04.496224",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "label": "button",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "icon": "",
+    "payload": "1",
+    "payloadType": "str",
+    "topic": "",
+    "x": 50,
+    "y": 320,
+    "wires": [["f1bf6300.199ff"]]
+  },
+  {
+    "id": "4579ad04.496224",
+    "type": "ui_group",
+    "z": "",
+    "name": "Кнопка",
+    "tab": "b0714eb1.38dc3",
+    "order": 1,
+    "disp": true,
+    "width": "6",
+    "collapse": false
+  },
+  {
+    "id": "b0714eb1.38dc3",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Home",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false
+  }
+]
