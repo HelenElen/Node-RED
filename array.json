@@ -1,12 +1,332 @@
 [
     {
+        "id": "4a493731.9810b8",
+        "type": "comment",
+        "z": "7a103b8d.6a72c4",
+        "name": "ARRAY",
+        "info": "",
+        "x": 90,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7fc28890.7b11d8",
+        "type": "comment",
+        "z": "7a103b8d.6a72c4",
+        "name": "Вам нужно выполнить какое-то действие с каждым элементом массива. К примеру, у вас есть массив чисел, и вам нужно округлить каждое его число до ближайшего целого.",
+        "info": "",
+        "x": 640,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a144b36.564165",
+        "type": "inject",
+        "z": "7a103b8d.6a72c4",
+        "name": "Array of decimals",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[1.67,2.98,3.12,4.99,5.50]",
+        "payloadType": "json",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "ae3fecad.4f4d8"
+            ]
+        ]
+    },
+    {
+        "id": "ae3fecad.4f4d8",
+        "type": "split",
+        "z": "7a103b8d.6a72c4",
+        "name": "Split array",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 260,
+        "y": 240,
+        "wires": [
+            [
+                "739a0daf.f05604"
+            ]
+        ]
+    },
+    {
+        "id": "739a0daf.f05604",
+        "type": "range",
+        "z": "7a103b8d.6a72c4",
+        "minin": "0",
+        "maxin": "10",
+        "minout": "0",
+        "maxout": "10",
+        "action": "scale",
+        "round": true,
+        "property": "payload",
+        "name": "Round value",
+        "x": 410,
+        "y": 240,
+        "wires": [
+            [
+                "f5883a6.eac04c8"
+            ]
+        ]
+    },
+    {
+        "id": "f5883a6.eac04c8",
+        "type": "join",
+        "z": "7a103b8d.6a72c4",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 550,
+        "y": 240,
+        "wires": [
+            [
+                "400e4e7a.59edd"
+            ]
+        ]
+    },
+    {
+        "id": "400e4e7a.59edd",
+        "type": "debug",
+        "z": "7a103b8d.6a72c4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d948cd2.55d773",
+        "type": "debug",
+        "z": "7a103b8d.6a72c4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "5d6ee814.666df8",
+        "type": "inject",
+        "z": "7a103b8d.6a72c4",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 700,
+        "wires": [
+            [
+                "a47563e9.79e92",
+                "d948cd2.55d773"
+            ]
+        ]
+    },
+    {
+        "id": "a47563e9.79e92",
+        "type": "trigger",
+        "z": "7a103b8d.6a72c4",
+        "name": "Watchdog",
+        "op1": "",
+        "op2": "timeout",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "5",
+        "extend": true,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 330,
+        "y": 740,
+        "wires": [
+            [
+                "370fcd9c.f165b2"
+            ]
+        ]
+    },
+    {
+        "id": "370fcd9c.f165b2",
+        "type": "debug",
+        "z": "7a103b8d.6a72c4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "fb13642a.96b508",
+        "type": "comment",
+        "z": "7a103b8d.6a72c4",
+        "name": "TRIGGER",
+        "info": "",
+        "x": 100,
+        "y": 580,
+        "wires": []
+    },
+    {
         "id": "b354515c.a839",
         "type": "comment",
         "z": "7a103b8d.6a72c4",
         "name": "Узнать, пришло ли сообщение спустя заданное время, можно при помощи ноды «Trigger».",
         "info": "Вам нужно запустить поток, если сообщение не было получено спустя заданное количество времени. Например, у вас есть датчик, от которого приходят данные каждые 5 секунд, и вам нужно знать, если данные от него вдруг не придут.\n\n**Нода «Trigger» настроена здесь так, что сначала не отправляет ничего, но будет ждать 5 секунд прежде, чем отправит сообщение «timeout». Кроме того, в ее настройках поставлена галочка рядом с пунктом «extend delay if new message arrives». Это значит, что если сообщения будут приходить без перерыва, эта нода ничего никуда не отправит. Но если 5 секунд пройдет, а сообщения так получено и не будет, она отправит сообщение «timeout».\n**\n",
         "x": 410,
-        "y": 480,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "1df18d0c.e7f543",
+        "type": "inject",
+        "z": "7a103b8d.6a72c4",
+        "name": "Inject Array",
+        "props": [
+            {
+                "p": "payload",
+                "v": "[0,1,2,3,4,5,6,7,8,9]",
+                "vt": "json"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[0,1,2,3,4,5,6,7,8,9]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 440,
+        "wires": [
+            [
+                "4a307030.d861"
+            ]
+        ]
+    },
+    {
+        "id": "4a307030.d861",
+        "type": "split",
+        "z": "7a103b8d.6a72c4",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "115a908e.2531ef"
+            ]
+        ]
+    },
+    {
+        "id": "115a908e.2531ef",
+        "type": "delay",
+        "z": "7a103b8d.6a72c4",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 420,
+        "y": 440,
+        "wires": [
+            [
+                "2ed052ec.466f6e"
+            ]
+        ]
+    },
+    {
+        "id": "2ed052ec.466f6e",
+        "type": "debug",
+        "z": "7a103b8d.6a72c4",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 560,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e250921b.09f7f",
+        "type": "comment",
+        "z": "7a103b8d.6a72c4",
+        "name": "К примеру, у вас есть сообщение, содержащее массив значений, и вам нужно разбить его на несколько сообщений, а затем обработать каждое сообщение в этом потоке со скоростью одно сообщение в секунду",
+        "info": "Вам нужно замедлить поток сообщений, идущих через поток. К примеру, у вас есть сообщение, содержащее массив значений, и вам нужно разбить его на несколько сообщений, а затем обработать каждое сообщение в этом потоке со скоростью одно сообщение в секунду.\nВоспользуйтесь нодой «Delay», с ее помощью настроив ограничение скорости, с которой сообщения могут проходить через нее.\n",
+        "x": 740,
+        "y": 380,
         "wires": []
     }
 ]
