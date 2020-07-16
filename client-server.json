@@ -1,0 +1,20 @@
+[
+  {
+    "id": "72419ea6.3736e",
+    "type": "websocket out",
+    "z": "eea77e86.b636a",
+    "name": "",
+    "server": "8783c19f.b5175",
+    "client": "",
+    "x": 960,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "8783c19f.b5175",
+    "type": "websocket-listener",
+    "z": "",
+    "path": "/ws/request",
+    "wholemsg": "false"
+  }
+]
